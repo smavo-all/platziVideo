@@ -1,8 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import App from './containers/App';
 
-// import HelloWorld from './components/HelloWorld';
-// import Header from './components/Header';
-import Header from './components/Header';
-
-ReactDom.render(<Header />, document.getElementById('app'));
+ReactDom.render(<App />, document.getElementById('app'));

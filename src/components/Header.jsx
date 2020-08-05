@@ -3,7 +3,7 @@ import '../assets/styles/components/Header.scss';
 
 const Header = () => (
   <header className='header'>
-    <img className='header__img' src='' alt='Platzi Video' />
+    <img className='header__img' src='/' alt='Platzi Video' />
     <div className='header__menu'>
       <div className='header__menu--profile'>
         <img src='' alt='' />
