@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
 import { registerRequest } from '../actions';
+import Header from '../components/Header';
 import '../assets/styles/components/Register.scss';
 
 const Register = (props) => {
   const [form, setValues] = useState({
     email: '',
+    id: '',
     name: '',
     password: '',
   });
 
-  const handleInput = (event) => {
+  const updateInput = (event) => {
     setValues({
       ...form,
       [event.target.name]: event.target.value,
@@ -24,7 +26,6 @@ const Register = (props) => {
     props.registerRequest(form);
     props.history.push('/');
   };
-
   return (
     <>
       <Header isRegister />
@@ -37,25 +38,25 @@ const Register = (props) => {
               className='input'
               type='text'
               placeholder='Nombre'
-              onChange={handleInput}
+              onChange={updateInput}
             />
             <input
               name='email'
               className='input'
               type='text'
               placeholder='Correo'
-              onChange={handleInput}
+              onChange={updateInput}
             />
             <input
               name='password'
               className='input'
               type='password'
               placeholder='Contraseña'
-              onChange={handleInput}
+              onChange={updateInput}
             />
-            <button className='button'>Registrarme</button>
+            <button className='button' type='submit'>Registrarme</button>
           </form>
-          <Link to='/login'>
+          <Link to='/login' className='register__container--login'>
             Iniciar sesión
           </Link>
         </section>
@@ -66,6 +67,10 @@ const Register = (props) => {
 
 const mapDispatchToProps = {
   registerRequest,
+};
+
+Register.propTypes = {
+  registerRequest: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(Register);
